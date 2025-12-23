@@ -138,6 +138,9 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
+# Tailwind CSS compiled output (ADDED - uncomment if you generate a separate output file)
+# website/static/website/css/output.css
+static/src/output.css
 
 # Created by https://www.toptal.com/developers/gitignore/api/django
 # Edit at https://www.toptal.com/developers/gitignore?templates=django
