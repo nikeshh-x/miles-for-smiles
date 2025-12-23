@@ -1,14 +1,49 @@
 {% load static %}
-<!doctype html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="./static/src/output.css" rel="stylesheet">
-</head>
-<body>
-    {% block content %}
-      
-    {% endblock content %}
-</body>
+<!DOCTYPE html>
+<html class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="{% static 'src/output.css' %}" rel="stylesheet" />
+    <link rel="preload" as="image" href="{% static 'images/banner.webp' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body style="font-family: 'Poppins', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">
+    {% include "includes/navbar.html" %} 
+    {% block content %} 
+    
+    {% endblock content%}
+    {% include "includes/footer.html" %}
+
+    <button id="backToTop" aria-label="Back to top" class="fixed bottom-6 right-6 hidden rounded-full bg-blue-600 text-white p-3 shadow hover:bg-blue-700 transition">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script>
+      // Back to top visibility and behavior
+      const backBtn = document.getElementById('backToTop');
+      const toggleBackBtn = () => {
+        if (window.scrollY > 400) backBtn.classList.remove('hidden');
+        else backBtn.classList.add('hidden');
+      };
+      window.addEventListener('scroll', toggleBackBtn);
+      backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+      // Simple reveal-on-scroll
+      const revealEls = document.querySelectorAll('[data-reveal]');
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.remove('opacity-0','translate-y-4');
+            e.target.classList.add('opacity-100','translate-y-0');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+      revealEls.forEach(el => io.observe(el));
+    </script>
+  </body>
 </html>

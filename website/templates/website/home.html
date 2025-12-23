@@ -1,4 +1,1179 @@
-{% extends "base.html" %} 
-{% block content %}
-<h1 class="text-red-500 font-bold underline">Hello world!</h1>
+{% extends "base.html" %} {% load static %} {% block content %}
+
+<!-- Hero Section with Parallax Effect -->
+<section
+  class="relative h-screen flex items-center justify-center bg-center bg-cover bg-no-repeat overflow-hidden"
+  style="
+    background-image: linear-gradient(
+        135deg,
+        rgba(37, 99, 235, 0.85),
+        rgba(59, 130, 246, 0.75)
+      ),
+      url('{% static 'images/banner.webp' %}');"
+  aria-label="Miles For Smiles banner"
+>
+  <!-- Animated Background Overlay -->
+  <div
+    class="absolute inset-0 bg-linear-to-br from-blue-600/30 to-teal-500/20 animate-pulse-slow"
+  ></div>
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-5xl text-center px-6 animate-fade-in-up">
+    <!-- Decorative Element -->
+    <div class="inline-block mb-6">
+      <span
+        class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-6 py-2 rounded-full text-white text-sm font-medium border border-white/20"
+      >
+        <i class="fa-solid fa-heart text-red-400 animate-pulse"></i>
+        Making a Difference, One Smile at a Time
+      </span>
+    </div>
+
+    <h1
+      class="text-white text-5xl md:text-7xl font-extrabold leading-tight mb-6 drop-shadow-2xl"
+    >
+      Building Healthier <br />
+      <span
+        class="text-transparent bg-clip-text bg-linear-to-r from-teal-200 to-cyan-200 animate-gradient"
+      >
+        Communities
+      </span>
+    </h1>
+
+    <p
+      class="text-white/90 text-xl md:text-2xl mb-10 max-w-3xl mx-auto font-light leading-relaxed"
+    >
+      Join us in our mission to provide free dental care and education to
+      communities in need across Nepal
+    </p>
+
+    <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
+      <a
+        href="#contact"
+        class="group bg-linear-to-r from-green-500 to-green-600 font-semibold text-white px-8 py-4 rounded-xl hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 focus:ring-4 focus:ring-green-300 focus:outline-none flex items-center justify-center gap-2"
+      >
+        <i
+          class="fa-solid fa-hand-holding-heart group-hover:scale-110 transition-transform"
+        ></i>
+        Donate Now
+      </a>
+      <a
+        href="#contact"
+        class="group bg-white/10 backdrop-blur-sm font-semibold text-white px-8 py-4 rounded-xl hover:bg-white/20 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 border-2 border-white/30 focus:ring-4 focus:ring-white/20 focus:outline-none flex items-center justify-center gap-2"
+      >
+        <i
+          class="fa-solid fa-users group-hover:scale-110 transition-transform"
+        ></i>
+        Join Our Team
+      </a>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="animate-bounce">
+      <a href="#objectives" class="text-white/70 hover:text-white transition-colors">
+        <i class="fa-solid fa-chevron-down text-3xl"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- Decorative Shapes -->
+  <div class="absolute bottom-0 left-0 right-0">
+    <svg viewBox="0 0 1440 120" class="w-full h-auto fill-blue-50">
+      <path
+        d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"
+      ></path>
+    </svg>
+  </div>
+</section>
+
+<!-- Objectives Section with Grid Layout -->
+<section
+  id="objectives"
+  class="py-20 bg-linear-to-br from-gray-50 to-blue-50/30 scroll-mt-20"
+>
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <span
+        class="inline-block text-blue-600 font-semibold text-sm uppercase tracking-wider mb-2"
+        >Our Mission</span
+      >
+      <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+        Our Objectives
+      </h2>
+      <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+        Driving meaningful change through comprehensive dental care initiatives
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Objective Cards -->
+      <div
+        class="group p-6 rounded-xl bg-white border border-gray-100 hover:border-blue-500 hover:shadow-xl transition-all duration-300"
+      >
+        <div class="flex items-start gap-4">
+          <div
+            class="shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center group-hover:bg-blue-600 transition-colors"
+          >
+            <i
+              class="fa-solid fa-globe text-blue-600 group-hover:text-white text-xl transition-colors"
+            ></i>
+          </div>
+          <div>
+            <h3
+              class="font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors"
+            >
+              Reach the Unreached
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Deliver quality services to remote and marginalized communities.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="group p-6 rounded-xl bg-white border border-gray-100 hover:border-teal-500 hover:shadow-xl transition-all duration-300"
+      >
+        <div class="flex items-start gap-4">
+          <div
+            class="shrink-0 w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center group-hover:bg-teal-600 transition-colors"
+          >
+            <i
+              class="fa-solid fa-bullhorn text-teal-600 group-hover:text-white text-xl transition-colors"
+            ></i>
+          </div>
+          <div>
+            <h3
+              class="font-bold text-gray-900 mb-2 group-hover:text-teal-600 transition-colors"
+            >
+              Promote Awareness
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Raise awareness on prevention and healthy lifestyles through
+              education.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="group p-6 rounded-xl bg-white border border-gray-100 hover:border-green-500 hover:shadow-xl transition-all duration-300"
+      >
+        <div class="flex items-start gap-4">
+          <div
+            class="shrink-0 w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center group-hover:bg-green-600 transition-colors"
+          >
+            <i
+              class="fa-solid fa-school text-green-600 group-hover:text-white text-xl transition-colors"
+            ></i>
+          </div>
+          <div>
+            <h3
+              class="font-bold text-gray-900 mb-2 group-hover:text-green-600 transition-colors"
+            >
+              Free Dental Camps
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Organize screening and treatment camps in schools and rural areas.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="group p-6 rounded-xl bg-white border border-gray-100 hover:border-indigo-500 hover:shadow-xl transition-all duration-300"
+      >
+        <div class="flex items-start gap-4">
+          <div
+            class="shrink-0 w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center group-hover:bg-indigo-600 transition-colors"
+          >
+            <i
+              class="fa-solid fa-shield-halved text-indigo-600 group-hover:text-white text-xl transition-colors"
+            ></i>
+          </div>
+          <div>
+            <h3
+              class="font-bold text-gray-900 mb-2 group-hover:text-indigo-600 transition-colors"
+            >
+              Preventive Dentistry
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Emphasize early detection and prevention of dental diseases.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="group p-6 rounded-xl bg-white border border-gray-100 hover:border-purple-500 hover:shadow-xl transition-all duration-300"
+      >
+        <div class="flex items-start gap-4">
+          <div
+            class="shrink-0 w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center group-hover:bg-purple-600 transition-colors"
+          >
+            <i
+              class="fa-solid fa-hospital text-purple-600 group-hover:text-white text-xl transition-colors"
+            ></i>
+          </div>
+          <div>
+            <h3
+              class="font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition-colors"
+            >
+              Public Health Support
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Collaborate with government health programs and policies.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="group p-6 rounded-xl bg-white border border-gray-100 hover:border-pink-500 hover:shadow-xl transition-all duration-300"
+      >
+        <div class="flex items-start gap-4">
+          <div
+            class="shrink-0 w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center group-hover:bg-pink-600 transition-colors"
+          >
+            <i
+              class="fa-solid fa-graduation-cap text-pink-600 group-hover:text-white text-xl transition-colors"
+            ></i>
+          </div>
+          <div>
+            <h3
+              class="font-bold text-gray-900 mb-2 group-hover:text-pink-600 transition-colors"
+            >
+              Train & Empower
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Support professionals and volunteers to serve effectively.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="group p-6 rounded-xl bg-white border border-gray-100 hover:border-orange-500 hover:shadow-xl transition-all duration-300"
+      >
+        <div class="flex items-start gap-4">
+          <div
+            class="shrink-0 w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center group-hover:bg-orange-600 transition-colors"
+          >
+            <i
+              class="fa-solid fa-users text-orange-600 group-hover:text-white text-xl transition-colors"
+            ></i>
+          </div>
+          <div>
+            <h3
+              class="font-bold text-gray-900 mb-2 group-hover:text-orange-600 transition-colors"
+            >
+              Strengthen Communities
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Enable communities to take charge of their oral health.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="group p-6 rounded-xl bg-white border border-gray-100 hover:border-red-500 hover:shadow-xl transition-all duration-300"
+      >
+        <div class="flex items-start gap-4">
+          <div
+            class="shrink-0 w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center group-hover:bg-red-600 transition-colors"
+          >
+            <i
+              class="fa-solid fa-heart text-red-600 group-hover:text-white text-xl transition-colors"
+            ></i>
+          </div>
+          <div>
+            <h3
+              class="font-bold text-gray-900 mb-2 group-hover:text-red-600 transition-colors"
+            >
+              Ethical Care
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Deliver care that is ethical, safe, inclusive, and compassionate.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Organizations Slider -->
+<section id="organizations" class="py-20 bg-gray-50 scroll-mt-20">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-12">
+      <span
+        class="inline-block text-blue-600 font-semibold text-sm uppercase tracking-wider mb-2"
+        >Our Partners</span
+      >
+      <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+        Organizations We've Worked With
+      </h2>
+      <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+        Trusted partners in our mission to transform communities
+      </p>
+    </div>
+
+    <div class="relative overflow-hidden py-8">
+      <div
+        class="flex items-center gap-16 opacity-70 hover:opacity-100 transition-opacity duration-300"
+        style="width: 200%; animation: marquee 40s linear infinite"
+      >
+        <div class="flex items-center gap-16 w-1/2">
+          <img
+            src="{% static 'images/partner1.png' %}"
+            alt="Partner 1"
+            class="h-16 w-auto filter grayscale hover:grayscale-0 transition-all duration-300"
+          />
+          <img
+            src="{% static 'images/partner2.png' %}"
+            alt="Partner 2"
+            class="h-16 w-auto filter grayscale hover:grayscale-0 transition-all duration-300"
+          />
+          <img
+            src="{% static 'images/partner3.png' %}"
+            alt="Partner 3"
+            class="h-16 w-auto filter grayscale hover:grayscale-0 transition-all duration-300"
+          />
+          <img
+            src="{% static 'images/partner4.png' %}"
+            alt="Partner 4"
+            class="h-16 w-auto filter grayscale hover:grayscale-0 transition-all duration-300"
+          />
+          <img
+            src="{% static 'images/partner5.png' %}"
+            alt="Partner 5"
+            class="h-16 w-auto filter grayscale hover:grayscale-0 transition-all duration-300"
+          />
+          <img
+            src="{% static 'images/partner6.png' %}"
+            alt="Partner 6"
+            class="h-16 w-auto filter grayscale hover:grayscale-0 transition-all duration-300"
+          />
+        </div>
+        <div class="flex items-center gap-16 w-1/2">
+          <img
+            src="{% static 'images/partner1.png' %}"
+            alt="Partner 1"
+            class="h-16 w-auto filter grayscale hover:grayscale-0 transition-all duration-300"
+          />
+          <img
+            src="{% static 'images/partner2.png' %}"
+            alt="Partner 2"
+            class="h-16 w-auto filter grayscale hover:grayscale-0 transition-all duration-300"
+          />
+          <img
+            src="{% static 'images/partner3.png' %}"
+            alt="Partner 3"
+            class="h-16 w-auto filter grayscale hover:grayscale-0 transition-all duration-300"
+          />
+          <img
+            src="{% static 'images/partner4.png' %}"
+            alt="Partner 4"
+            class="h-16 w-auto filter grayscale hover:grayscale-0 transition-all duration-300"
+          />
+          <img
+            src="{% static 'images/partner5.png' %}"
+            alt="Partner 5"
+            class="h-16 w-auto filter grayscale hover:grayscale-0 transition-all duration-300"
+          />
+          <img
+            src="{% static 'images/partner6.png' %}"
+            alt="Partner 6"
+            class="h-16 w-auto filter grayscale hover:grayscale-0 transition-all duration-300"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery Section with Lightbox Effect -->
+<section id="gallery" class="py-20 bg-white scroll-mt-20">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <span
+        class="inline-block text-blue-600 font-semibold text-sm uppercase tracking-wider mb-2"
+        >Our Work</span
+      >
+      <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Gallery</h2>
+      <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+        Moments captured from our dental camps and community outreach programs
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+      <div
+        class="group relative aspect-4/3 rounded-2xl overflow-hidden bg-gray-100 shadow-lg hover:shadow-2xl transition-all duration-300"
+      >
+        <img
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          src="{% static 'images/1.jpeg' %}"
+          alt="Dental camp"
+          loading="lazy"
+        />
+        <div
+          class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6"
+        >
+          <p class="text-white font-semibold">Dental Camp</p>
+        </div>
+      </div>
+
+      <div
+        class="group relative aspect-4/3 rounded-2xl overflow-hidden bg-gray-100 shadow-lg hover:shadow-2xl transition-all duration-300"
+      >
+        <img
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          src="{% static 'images/2.jpeg' %}"
+          alt="Oral health awareness"
+          loading="lazy"
+        />
+        <div
+          class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6"
+        >
+          <p class="text-white font-semibold">Health Awareness</p>
+        </div>
+      </div>
+
+      <div
+        class="group relative aspect-4/3 rounded-2xl overflow-hidden bg-gray-100 shadow-lg hover:shadow-2xl transition-all duration-300"
+      >
+        <img
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          src="{% static 'images/3.jpeg' %}"
+          alt="Community outreach"
+          loading="lazy"
+        />
+        <div
+          class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6"
+        >
+          <p class="text-white font-semibold">Community Outreach</p>
+        </div>
+      </div>
+
+      <div
+        class="group relative aspect-4/3 rounded-2xl overflow-hidden bg-gray-100 shadow-lg hover:shadow-2xl transition-all duration-300"
+      >
+        <img
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          src="{% static 'images/4.jpeg' %}"
+          alt="School screening"
+          loading="lazy"
+        />
+        <div
+          class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6"
+        >
+          <p class="text-white font-semibold">School Screening</p>
+        </div>
+      </div>
+
+      <div
+        class="group relative aspect-4/3 rounded-2xl overflow-hidden bg-gray-100 shadow-lg hover:shadow-2xl transition-all duration-300"
+      >
+        <img
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          src="{% static 'images/5.jpeg' %}"
+          alt="Treatment camp"
+          loading="lazy"
+        />
+        <div
+          class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6"
+        >
+          <p class="text-white font-semibold">Treatment Camp</p>
+        </div>
+      </div>
+
+      <div
+        class="group relative aspect-4/3 rounded-2xl overflow-hidden bg-gray-100 shadow-lg hover:shadow-2xl transition-all duration-300"
+      >
+        <img
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          src="{% static 'images/6.jpeg' %}"
+          alt="Volunteer team"
+          loading="lazy"
+        />
+        <div
+          class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6"
+        >
+          <p class="text-white font-semibold">Our Team</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-12">
+      <a
+        href="#"
+        class="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-xl hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 font-semibold"
+      >
+        View Full Gallery
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Section with Counter Animation -->
+<section id="stats" class="bg-blue-50 py-20 scroll-mt-20">
+  <div class="container mx-auto px-6">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Stat 1 -->
+      <div
+        class="text-center transform hover:scale-110 transition-transform duration-300"
+      >
+        <div
+          class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow"
+        >
+          <div
+            class="inline-flex items-center justify-center w-16 h-16 bg-linear-to-br from-blue-500 to-blue-600 rounded-full mb-4"
+          >
+            <i class="fa-solid fa-user-doctor text-white text-2xl"></i>
+          </div>
+          <h3
+            class="text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-blue-800 mb-2"
+          >
+            500+
+          </h3>
+          <p class="text-gray-600 font-medium text-lg">Patients Treated</p>
+        </div>
+      </div>
+
+      <!-- Stat 2 -->
+      <div
+        class="text-center transform hover:scale-110 transition-transform duration-300"
+      >
+        <div
+          class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow"
+        >
+          <div
+            class="inline-flex items-center justify-center w-16 h-16 bg-linear-to-br from-teal-500 to-teal-600 rounded-full mb-4"
+          >
+            <i class="fa-solid fa-hospital text-white text-2xl"></i>
+          </div>
+          <h3
+            class="text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-linear-to-r from-teal-600 to-teal-800 mb-2"
+          >
+            50+
+          </h3>
+          <p class="text-gray-600 font-medium text-lg">Dental Camps</p>
+        </div>
+      </div>
+
+      <!-- Stat 3 -->
+      <div
+        class="text-center transform hover:scale-110 transition-transform duration-300"
+      >
+        <div
+          class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow"
+        >
+          <div
+            class="inline-flex items-center justify-center w-16 h-16 bg-linear-to-br from-green-500 to-green-600 rounded-full mb-4"
+          >
+            <i class="fa-solid fa-map-location-dot text-white text-2xl"></i>
+          </div>
+          <h3
+            class="text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-linear-to-r from-green-600 to-green-800 mb-2"
+          >
+            15+
+          </h3>
+          <p class="text-gray-600 font-medium text-lg">Communities Reached</p>
+        </div>
+      </div>
+
+      <!-- Stat 4 -->
+      <div
+        class="text-center transform hover:scale-110 transition-transform duration-300"
+      >
+        <div
+          class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow"
+        >
+          <div
+            class="inline-flex items-center justify-center w-16 h-16 bg-linear-to-br from-indigo-500 to-indigo-600 rounded-full mb-4"
+          >
+            <i class="fa-solid fa-graduation-cap text-white text-2xl"></i>
+          </div>
+          <h3
+            class="text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-linear-to-r from-indigo-600 to-indigo-800 mb-2"
+          >
+            2000+
+          </h3>
+          <p class="text-gray-600 font-medium text-lg">People Educated</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Events Section -->
+<section id="events" class="py-20 bg-white scroll-mt-20">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <span
+        class="inline-block text-blue-600 font-semibold text-sm uppercase tracking-wider mb-2"
+        >What's Coming</span
+      >
+      <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+        Upcoming Events
+      </h2>
+      <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+        Join us in our upcoming dental camps and community outreach programs
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Event 1 -->
+      <div
+        class="group relative overflow-hidden rounded-2xl border-2 border-gray-100 bg-white hover:border-blue-500 hover:shadow-2xl transition-all duration-300"
+      >
+        <div
+          class="absolute top-0 right-0 w-24 h-24 bg-linear-to-br from-blue-500/10 to-transparent rounded-bl-full"
+        ></div>
+        <div class="p-8">
+          <div
+            class="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold mb-4"
+          >
+            <i class="fa-solid fa-calendar"></i>
+            Jan 12, 2026
+          </div>
+          <h3
+            class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors"
+          >
+            Rural Dental Camp
+          </h3>
+          <p class="text-gray-600 mb-4 flex items-center gap-2">
+            <i class="fa-solid fa-location-dot text-blue-600"></i>
+            Lamjung, Community Health Center
+          </p>
+          <p class="text-gray-700 leading-relaxed mb-6">
+            Free screening, fluoride application, and comprehensive oral hygiene
+            education for rural communities.
+          </p>
+          <a
+            href="#"
+            class="inline-flex items-center gap-2 text-blue-600 font-semibold hover:gap-3 transition-all"
+          >
+            Learn More
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Event 2 -->
+      <div
+        class="group relative overflow-hidden rounded-2xl border-2 border-gray-100 bg-white hover:border-teal-500 hover:shadow-2xl transition-all duration-300"
+      >
+        <div
+          class="absolute top-0 right-0 w-24 h-24 bg-linear-to-br from-teal-500/10 to-transparent rounded-bl-full"
+        ></div>
+        <div class="p-8">
+          <div
+            class="inline-flex items-center gap-2 bg-teal-100 text-teal-700 px-4 py-2 rounded-full text-sm font-semibold mb-4"
+          >
+            <i class="fa-solid fa-calendar"></i>
+            Feb 3, 2026
+          </div>
+          <h3
+            class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-teal-600 transition-colors"
+          >
+            School Outreach
+          </h3>
+          <p class="text-gray-600 mb-4 flex items-center gap-2">
+            <i class="fa-solid fa-location-dot text-teal-600"></i>
+            Pokhara, Shree Public School
+          </p>
+          <p class="text-gray-700 leading-relaxed mb-6">
+            Dental checkups and interactive awareness sessions for students and
+            parents in local schools.
+          </p>
+          <a
+            href="#"
+            class="inline-flex items-center gap-2 text-teal-600 font-semibold hover:gap-3 transition-all"
+          >
+            Learn More
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Event 3 -->
+      <div
+        class="group relative overflow-hidden rounded-2xl border-2 border-gray-100 bg-white hover:border-indigo-500 hover:shadow-2xl transition-all duration-300"
+      >
+        <div
+          class="absolute top-0 right-0 w-24 h-24 bg-linear-to-br from-indigo-500/10 to-transparent rounded-bl-full"
+        ></div>
+        <div class="p-8">
+          <div
+            class="inline-flex items-center gap-2 bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-semibold mb-4"
+          >
+            <i class="fa-solid fa-calendar"></i>
+            Feb 20, 2026
+          </div>
+          <h3
+            class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-indigo-600 transition-colors"
+          >
+            Community Awareness
+          </h3>
+          <p class="text-gray-600 mb-4 flex items-center gap-2">
+            <i class="fa-solid fa-location-dot text-indigo-600"></i>
+            Kaski, Town Hall
+          </p>
+          <p class="text-gray-700 leading-relaxed mb-6">
+            Educational talks on preventive dentistry and distribution of
+            hygiene kits to community members.
+          </p>
+          <a
+            href="#"
+            class="inline-flex items-center gap-2 text-indigo-600 font-semibold hover:gap-3 transition-all"
+          >
+            Learn More
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Team Section -->
+<section
+  id="team"
+  class="py-20 bg-linear-to-br from-gray-50 to-blue-50/30 scroll-mt-20"
+>
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <span
+        class="inline-block text-blue-600 font-semibold text-sm uppercase tracking-wider mb-2"
+        >Our Heroes</span
+      >
+      <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+        Meet Our Team
+      </h2>
+      <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+        Dedicated professionals and volunteers making a difference in
+        communities
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Team Member 1 -->
+      <div class="group">
+        <div
+          class="relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 bg-linear-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+          ></div>
+          <div class="p-8 text-center relative">
+            <div class="relative inline-block mb-6">
+              <img
+                src="{% static 'images/person.jpg' %}"
+                alt="Dr. Arunima Mandzr"
+                class="h-32 w-32 rounded-full mx-auto object-cover border-4 border-white shadow-xl group-hover:scale-110 transition-transform duration-300"
+              />
+              <div
+                class="absolute -bottom-2 -right-2 w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center"
+              >
+                <i class="fa-solid fa-star text-white text-sm"></i>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-1">
+              Dr. Arunima Mandzr
+            </h3>
+            <p class="text-blue-600 font-medium mb-4">Founder & Lead Dentist</p>
+            <div class="flex items-center justify-center gap-3">
+              <a
+                href="#"
+                class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all duration-300"
+              >
+                <i class="fa-brands fa-linkedin"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all duration-300"
+              >
+                <i class="fa-brands fa-twitter"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all duration-300"
+              >
+                <i class="fa-brands fa-facebook"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Team Member 2 -->
+      <div class="group">
+        <div
+          class="relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 bg-linear-to-br from-teal-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+          ></div>
+          <div class="p-8 text-center relative">
+            <div class="relative inline-block mb-6">
+              <img
+                src="{% static 'images/person.jpg' %}"
+                alt="Dr. Suman Gurung"
+                class="h-32 w-32 rounded-full mx-auto object-cover border-4 border-white shadow-xl group-hover:scale-110 transition-transform duration-300"
+              />
+              <div
+                class="absolute -bottom-2 -right-2 w-10 h-10 bg-teal-600 rounded-full flex items-center justify-center"
+              >
+                <i class="fa-solid fa-heart text-white text-sm"></i>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-1">
+              Dr. Suman Gurung
+            </h3>
+            <p class="text-teal-600 font-medium mb-4">Community Programs</p>
+            <div class="flex items-center justify-center gap-3">
+              <a
+                href="#"
+                class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-teal-600 hover:text-white transition-all duration-300"
+              >
+                <i class="fa-brands fa-linkedin"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-teal-600 hover:text-white transition-all duration-300"
+              >
+                <i class="fa-brands fa-twitter"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-teal-600 hover:text-white transition-all duration-300"
+              >
+                <i class="fa-brands fa-facebook"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Team Member 3 -->
+      <div class="group">
+        <div
+          class="relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 bg-linear-to-br from-indigo-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+          ></div>
+          <div class="p-8 text-center relative">
+            <div class="relative inline-block mb-6">
+              <img
+                src="{% static 'images/person.jpg' %}"
+                alt="Dr. Nisha Thapa"
+                class="h-32 w-32 rounded-full mx-auto object-cover border-4 border-white shadow-xl group-hover:scale-110 transition-transform duration-300"
+              />
+              <div
+                class="absolute -bottom-2 -right-2 w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center"
+              >
+                <i class="fa-solid fa-shield-halved text-white text-sm"></i>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-1">
+              Dr. Nisha Thapa
+            </h3>
+            <p class="text-indigo-600 font-medium mb-4">Preventive Dentistry</p>
+            <div class="flex items-center justify-center gap-3">
+              <a
+                href="#"
+                class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-all duration-300"
+              >
+                <i class="fa-brands fa-linkedin"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-all duration-300"
+              >
+                <i class="fa-brands fa-twitter"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-all duration-300"
+              >
+                <i class="fa-brands fa-facebook"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Team Member 4 -->
+      <div class="group">
+        <div
+          class="relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 bg-linear-to-br from-green-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+          ></div>
+          <div class="p-8 text-center relative">
+            <div class="relative inline-block mb-6">
+              <img
+                src="{% static 'images/person.jpg' %}"
+                alt="Bibek Karki"
+                class="h-32 w-32 rounded-full mx-auto object-cover border-4 border-white shadow-xl group-hover:scale-110 transition-transform duration-300"
+              />
+              <div
+                class="absolute -bottom-2 -right-2 w-10 h-10 bg-green-600 rounded-full flex items-center justify-center"
+              >
+                <i class="fa-solid fa-users text-white text-sm"></i>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-1">Bibek Karki</h3>
+            <p class="text-green-600 font-medium mb-4">Volunteer Coordinator</p>
+            <div class="flex items-center justify-center gap-3">
+              <a
+                href="#"
+                class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-green-600 hover:text-white transition-all duration-300"
+              >
+                <i class="fa-brands fa-linkedin"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-green-600 hover:text-white transition-all duration-300"
+              >
+                <i class="fa-brands fa-twitter"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-green-600 hover:text-white transition-all duration-300"
+              >
+                <i class="fa-brands fa-facebook"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-20 bg-white scroll-mt-20">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <span
+        class="inline-block text-blue-600 font-semibold text-sm uppercase tracking-wider mb-2"
+        >Get In Touch</span
+      >
+      <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+        Contact Us
+      </h2>
+      <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+        Have questions or want to get involved? We'd love to hear from you!
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+      <!-- Contact Info -->
+      <div class="space-y-8">
+        <div
+          class="group p-6 rounded-2xl bg-linear-to-br from-blue-50 to-white border border-blue-100 hover:shadow-xl transition-all duration-300"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="shrink-0 w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform"
+            >
+              <i class="fa-solid fa-envelope text-white text-xl"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-gray-900 mb-2">Email</h3>
+              <a
+                href="mailto:info@milesforsmiles.org"
+                class="text-blue-600 hover:text-blue-700 font-medium"
+                >info@milesforsmiles.org</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="group p-6 rounded-2xl bg-linear-to-br from-teal-50 to-white border border-teal-100 hover:shadow-xl transition-all duration-300"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="shrink-0 w-14 h-14 bg-teal-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform"
+            >
+              <i class="fa-solid fa-phone text-white text-xl"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-gray-900 mb-2">Phone</h3>
+              <a
+                href="tel:+9779800000000"
+                class="text-teal-600 hover:text-teal-700 font-medium"
+                >+977-9800000000</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="group p-6 rounded-2xl bg-linear-to-br from-indigo-50 to-white border border-indigo-100 hover:shadow-xl transition-all duration-300"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="shrink-0 w-14 h-14 bg-indigo-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform"
+            >
+              <i class="fa-solid fa-location-dot text-white text-xl"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-gray-900 mb-2">Address</h3>
+              <p class="text-gray-700">Pokhara, Gandaki Province, Nepal</p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="p-6 rounded-2xl bg-linear-to-br from-gray-50 to-white border border-gray-100"
+        >
+          <h3 class="font-bold text-gray-900 mb-4">Follow Us</h3>
+          <div class="flex gap-3">
+            <a
+              href="#"
+              class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center text-white hover:bg-blue-700 hover:scale-110 transition-all duration-300"
+            >
+              <i class="fa-brands fa-facebook text-xl"></i>
+            </a>
+            <a
+              href="#"
+              class="w-12 h-12 bg-blue-400 rounded-xl flex items-center justify-center text-white hover:bg-blue-500 hover:scale-110 transition-all duration-300"
+            >
+              <i class="fa-brands fa-twitter text-xl"></i>
+            </a>
+            <a
+              href="#"
+              class="w-12 h-12 bg-pink-600 rounded-xl flex items-center justify-center text-white hover:bg-pink-700 hover:scale-110 transition-all duration-300"
+            >
+              <i class="fa-brands fa-instagram text-xl"></i>
+            </a>
+            <a
+              href="#"
+              class="w-12 h-12 bg-blue-700 rounded-xl flex items-center justify-center text-white hover:bg-blue-800 hover:scale-110 transition-all duration-300"
+            >
+              <i class="fa-brands fa-linkedin text-xl"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div
+        class="bg-linear-to-br from-white to-gray-50 rounded-2xl shadow-xl border border-gray-100 p-8"
+      >
+        <form action="#" method="post" class="space-y-6">
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-2"
+              >Full Name</label
+            >
+            <input
+              type="text"
+              name="name"
+              required
+              class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-blue-600 focus:ring-4 focus:ring-blue-100 transition-all outline-none"
+              placeholder="John Doe"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-2"
+              >Email Address</label
+            >
+            <input
+              type="email"
+              name="email"
+              required
+              class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-blue-600 focus:ring-4 focus:ring-blue-100 transition-all outline-none"
+              placeholder="john@example.com"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-2"
+              >Phone Number</label
+            >
+            <input
+              type="tel"
+              name="phone"
+              class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-blue-600 focus:ring-4 focus:ring-blue-100 transition-all outline-none"
+              placeholder="+977-98xxxxxxxx"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-2"
+              >Message</label
+            >
+            <textarea
+              name="message"
+              rows="5"
+              required
+              class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-blue-600 focus:ring-4 focus:ring-blue-100 transition-all outline-none resize-none"
+              placeholder="How can we help you?"
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full bg-linear-to-r from-blue-600 to-blue-700 text-white font-bold px-8 py-4 rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 flex items-center justify-center gap-2"
+          >
+            <i class="fa-solid fa-paper-plane"></i>
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section
+  class="py-20 bg-linear-to-br from-blue-600 to-blue-800 relative overflow-hidden"
+>
+  <div
+    class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-30"
+  ></div>
+  <div class="container mx-auto px-6 text-center relative z-10">
+    <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">
+      Ready to Make a Difference?
+    </h2>
+    <p class="text-xl text-blue-100 mb-10 max-w-3xl mx-auto">
+      Your support helps us reach more communities and transform more lives
+      through quality dental care
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a
+        href="#contact"
+        class="group bg-white text-blue-600 font-bold px-10 py-4 rounded-xl hover:bg-blue-50 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 inline-flex items-center justify-center gap-2"
+      >
+        <i
+          class="fa-solid fa-hand-holding-heart group-hover:scale-110 transition-transform"
+        ></i>
+        Donate Now
+      </a>
+      <a
+        href="#contact"
+        class="group bg-blue-500/20 backdrop-blur-sm text-white font-bold px-10 py-4 rounded-xl hover:bg-blue-500/30 transition-all duration-300 border-2 border-white/30 hover:scale-105 inline-flex items-center justify-center gap-2"
+      >
+        <i
+          class="fa-solid fa-users group-hover:scale-110 transition-transform"
+        ></i>
+        Become a Volunteer
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
+
+
 {% endblock content %}

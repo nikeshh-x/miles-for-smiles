@@ -1,0 +1,71 @@
+{% load static %}
+<nav class="fixed top-0 inset-x-0 z-50 bg-white backdrop-blur shadow-sm">
+  <div class="container mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-3">
+      <img src="{% static "images/Logo.jpg" %}" alt="Miles For Smiles" class="h-12 w-auto"/>
+      <span class="hidden sm:inline font-semibold text-gray-800">Miles For Smiles</span>
+    </a>
+
+    <button id="mobileMenuBtn" class="md:hidden inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100 transition">
+      <i class="fa-solid fa-bars text-xl"></i>
+    </button>
+
+    <ul class="hidden md:flex items-center gap-6 text-[15px] font-medium" id="navLinks">
+      <li>
+        <a href="#" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-600 py-1">Home</a>
+      </li>
+      <li>
+        <a href="#learn-more" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-600 py-1" data-section="learn-more">Objective</a>
+      </li>
+      <li>
+        <a href="#gallery" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-600 py-1" data-section="gallery">Gallery</a>
+      </li>
+      <li>
+        <a href="#events" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-600 py-1" data-section="events">Events</a>
+      </li>
+      <li>
+        <a href="#contact" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-600 py-1" data-section="contact">Contact</a>
+      </li>
+    </ul>
+  </div>
+
+  <div id="mobileMenu" class="md:hidden hidden border-t border-gray-100 bg-white/95">
+    <div class="px-6 py-3 space-y-2">
+      <a href="#" class="flex items-center gap-2 text-gray-800 hover:text-blue-600 transition">Home</a>
+      <a href="#learn-more" class="flex items-center gap-2 text-gray-800 hover:text-blue-600 transition">Objectives</a>
+      <a href="#gallery" class="flex items-center gap-2 text-gray-800 hover:text-blue-600 transition">Gallery</a>
+      <a href="#events" class="flex items-center gap-2 text-gray-800 hover:text-blue-600 transition">Events</a>
+      <a href="#contact" class="flex items-center gap-2 text-gray-800 hover:text-blue-600 transition">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const btn = document.getElementById('mobileMenuBtn');
+  const menu = document.getElementById('mobileMenu');
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  }
+
+  const links = document.querySelectorAll('#navLinks a[data-section]');
+  const sections = Array.from(links).map(l => document.getElementById(l.dataset.section)).filter(Boolean);
+  if (sections.length) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const id = entry.target.id;
+        const link = document.querySelector(`#navLinks a[data-section="${id}"]`);
+        if (!link) return;
+        if (entry.isIntersecting) {
+          links.forEach(a => a.classList.remove('text-blue-600', 'border-blue-600'));
+          links.forEach(a => a.classList.add('text-gray-700'));
+          link.classList.remove('text-gray-700');
+          link.classList.add('text-blue-600', 'border-blue-600');
+        }
+      });
+    }, { rootMargin: '-40% 0px -60% 0px', threshold: 0.1 });
+
+    sections.forEach(sec => observer.observe(sec));
+  }
+</script>
