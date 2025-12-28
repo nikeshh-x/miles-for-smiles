@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Partner, GalleryMedia, TeamMember
+from .models import Partner, GalleryMedia, TeamMember, ContactMessage
 
 # Register your models here.
 
@@ -23,3 +23,14 @@ class TeamMemberAdmin(admin.ModelAdmin):
     search_fields = ('name', 'role')
     list_filter = ('created_at', 'updated_at')
     ordering = ('name',)
+
+@admin.register(ContactMessage)
+class ContactMessageAdmin(admin.ModelAdmin):
+    list_display = ['name', 'email', 'phone', 'submitted_at', 'is_read']
+    list_filter = ['is_read', 'submitted_at']
+    search_fields = ['name', 'email', 'phone', 'message']
+    readonly_fields = ['submitted_at']
+    list_editable = ['is_read']
+
+    def has_add_permission(self, request):
+        return False

@@ -125,3 +125,16 @@ STATICFILES_DIRS = [BASE_DIR / 'static']  # For global static files
 # Media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+
+# For development (shows emails in console)
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# For production (use Gmail or other SMTP)
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'milesforsmile2025@gmail.com'
+# EMAIL_HOST_PASSWORD = 'your-app-password'  # Use App Password, not regular password
+DEFAULT_FROM_EMAIL = 'nikeshmanandhar16@gmail.com'
