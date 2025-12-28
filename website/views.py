@@ -14,3 +14,12 @@ def home(request):
         'gallery_items':gallery_items,
     }
     return render(request, 'website/home.html', context)
+
+
+def gallery(request):
+    # Get all gallery media
+    gallery_items = GalleryMedia.objects.all()
+    context = {
+        'gallery_items': gallery_items,
+    }
+    return render(request, 'website/galleryPage.html', context)
