@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Partner, GalleryMedia
+from .models import Partner, GalleryMedia, TeamMember
 
 # Register your models here.
 
@@ -16,3 +16,10 @@ class GalleryMediaAdmin(admin.ModelAdmin):
     search_fields = ('title', 'description')
     list_filter = ('uploaded_at', 'updated_at')
     ordering = ('-uploaded_at',)
+
+@admin.register(TeamMember)
+class TeamMemberAdmin(admin.ModelAdmin):
+    list_display = ('name', 'role', 'created_at', 'updated_at')
+    search_fields = ('name', 'role')
+    list_filter = ('created_at', 'updated_at')
+    ordering = ('name',)

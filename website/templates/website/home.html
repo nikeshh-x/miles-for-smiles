@@ -640,7 +640,8 @@
     </div>
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-      <!-- Team Member 1 -->
+      {% for team in teams %}
+      <!-- Team Card -->
       <div class="group">
         <div
           class="relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
@@ -651,7 +652,7 @@
           <div class="p-8 text-center relative">
             <div class="relative inline-block mb-6">
               <img
-                src="{% static 'images/person.jpg' %}"
+                src="{{ team.photo.url }}"
                 alt="Dr. Arunima Mandzr"
                 class="h-32 w-32 rounded-full mx-auto object-cover border-4 border-white shadow-xl group-hover:scale-110 transition-transform duration-300"
               />
@@ -662,12 +663,12 @@
               </div>
             </div>
             <h3 class="text-xl font-bold text-gray-900 mb-1">
-              Dr. Arunima Manandhar
+              {{team.name}}
             </h3>
-            <p class="text-blue-600 font-medium mb-4">Founder & Lead Dentist</p>
+            <p class="text-blue-600 font-medium mb-4">{{team.role}}</p>
             <div class="flex items-center justify-center gap-3">
               <a
-                href="https://www.linkedin.com/in/nikeshhh/"
+                href=""
                 class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all duration-300"
               >
                 <i class="fa-brands fa-linkedin"></i>
@@ -688,106 +689,10 @@
           </div>
         </div>
       </div>
+      {% endfor %}
 
-      <!-- Team Member 2 -->
-      <div class="group">
-        <div
-          class="relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
-        >
-          <div
-            class="absolute inset-0 bg-linear-to-br from-teal-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
-          ></div>
-          <div class="p-8 text-center relative">
-            <div class="relative inline-block mb-6">
-              <img
-                src="{% static 'images/person.jpg' %}"
-                alt="Dr. Suman Gurung"
-                class="h-32 w-32 rounded-full mx-auto object-cover border-4 border-white shadow-xl group-hover:scale-110 transition-transform duration-300"
-              />
-              <div
-                class="absolute -bottom-2 -right-2 w-10 h-10 bg-teal-600 rounded-full flex items-center justify-center"
-              >
-                <i class="fa-solid fa-heart text-white text-sm"></i>
-              </div>
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-1">
-              Dr. Suman Gurung
-            </h3>
-            <p class="text-teal-600 font-medium mb-4">Community Programs</p>
-            <div class="flex items-center justify-center gap-3">
-              <a
-                href="#"
-                class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-teal-600 hover:text-white transition-all duration-300"
-              >
-                <i class="fa-brands fa-linkedin"></i>
-              </a>
-              <a
-                href="#"
-                class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-teal-600 hover:text-white transition-all duration-300"
-              >
-                <i class="fa-brands fa-twitter"></i>
-              </a>
-              <a
-                href="#"
-                class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-teal-600 hover:text-white transition-all duration-300"
-              >
-                <i class="fa-brands fa-facebook"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- Team Member 3 -->
-      <div class="group">
-        <div
-          class="relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
-        >
-          <div
-            class="absolute inset-0 bg-linear-to-br from-indigo-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
-          ></div>
-          <div class="p-8 text-center relative">
-            <div class="relative inline-block mb-6">
-              <img
-                src="{% static 'images/person.jpg' %}"
-                alt="Dr. Nisha Thapa"
-                class="h-32 w-32 rounded-full mx-auto object-cover border-4 border-white shadow-xl group-hover:scale-110 transition-transform duration-300"
-              />
-              <div
-                class="absolute -bottom-2 -right-2 w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center"
-              >
-                <i class="fa-solid fa-shield-halved text-white text-sm"></i>
-              </div>
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-1">
-              Dr. Nisha Thapa
-            </h3>
-            <p class="text-indigo-600 font-medium mb-4">Preventive Dentistry</p>
-            <div class="flex items-center justify-center gap-3">
-              <a
-                href="#"
-                class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-all duration-300"
-              >
-                <i class="fa-brands fa-linkedin"></i>
-              </a>
-              <a
-                href="#"
-                class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-all duration-300"
-              >
-                <i class="fa-brands fa-twitter"></i>
-              </a>
-              <a
-                href="#"
-                class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-all duration-300"
-              >
-                <i class="fa-brands fa-facebook"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Team Member 4 -->
+      <!-- Team Member 4
       <div class="group">
         <div
           class="relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
@@ -832,7 +737,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </section>
