@@ -2,7 +2,8 @@ from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.core.mail import send_mail
 from .forms import ContactForm
-from .models import Partner, GalleryMedia, TeamMember
+from .models import Partner, GalleryMedia, TeamMember, Events
+from django.utils import timezone
 
 
 # Create your views here.
@@ -16,11 +17,15 @@ def home(request):
     
     # Get all team members to display on the home page
     teams = TeamMember.objects.all()
+
+    # Get the events
+    events = Events.objects.all()[:3]
     
     context = {
         'partners':partners,
         'gallery_items':gallery_items,
         'teams':teams,
+        'events':events,
     }
     return render(request, 'website/home.html', context)
 
@@ -32,6 +37,40 @@ def gallery(request):
         'gallery_items': gallery_items,
     }
     return render(request, 'website/galleryPage.html', context)
+
+def events(request):
+    """Display all events with filters"""
+    events = Events.objects.all()
+    
+    # Apply filters
+    status_filter = request.GET.get('status', '')
+    search_query = request.GET.get('search', '')
+    
+    
+    if status_filter and status_filter != 'ALL':
+        events = events.filter(status=status_filter)
+    
+    if search_query:
+        events = events.filter(title__icontains=search_query) | \
+                 events.filter(description__icontains=search_query) | \
+                 events.filter(venue__icontains=search_query)
+    
+    # Get counts for stats
+    total_events = events.count()
+    upcoming_events = events.filter(start_date__gt=timezone.now()).count()
+    
+    context = {
+        'events': events,
+        'all_statuses': Events.STATUS_CHOICES,
+        'current_status': status_filter,
+        'search_query': search_query,
+        'total_events': total_events,
+        'upcoming_events': upcoming_events,
+    }
+    return render(request, 'website/eventPage.html', context)  # or 'events/events.html'
+
+def eventDetails(request, id):
+    return (request, 'website/eventDetail.html')
 
 def contact(request):
     if request.method == 'POST':

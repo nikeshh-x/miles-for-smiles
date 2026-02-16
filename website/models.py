@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import FileExtensionValidator
+from django.utils import timezone
 # Create your models here.
 
 class Partner(models.Model):
@@ -60,6 +61,61 @@ class TeamMember(models.Model):
         ordering = ['order', 'name']
         verbose_name = 'Team Member'
         verbose_name_plural = 'Team Members'
+
+class Events(models.Model):
+    STATUS_CHOICES = [
+        ('UPCOMING', 'Upcoming'),
+        ('COMPLETED', 'Completed'),
+        ('CANCELLED', 'Cancelled'),
+    ]
+
+    title = models.CharField(max_length=50)
+    slug = models.SlugField(unique=True, blank=True)
+    description = models.TextField()
+    venue = models.CharField(max_length=200)
+    image = models.ImageField(upload_to='events/images', blank=True, null=True)
+    start_date = models.DateTimeField()
+    end_date = models.DateTimeField()
+    organizer = models.CharField(max_length=100)
+    contact_email = models.EmailField(blank=True)
+    contact_phone = models.CharField(max_length=20, blank=True)
+    
+    status = models.CharField(
+        max_length=20,
+        choices=STATUS_CHOICES,
+        default='UPCOMING',
+    )
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-start_date']
+        indexes = [
+        models.Index(fields=['-start_date']),
+        models.Index(fields=['status'],)
+        ]
+
+    def __str__(self):
+        return self.title
+
+    def is_upcoming(self):
+        return self.start_date > timezone.now()
+    
+    def is_completed(self):
+        return self.end_date < timezone.now()
+       
+    def is_cancelled(self):
+        return self.status == 'CANCELLED'
+
+    def update_status(self):
+        if self.is_completed():
+            self.status = 'completed'
+        elif self.is_cancelled():
+            self.status = 'cancelled'
+        else:
+            self.status = 'upcomming'
+        self.save()
 
 class ContactMessage(models.Model):
     name = models.CharField(max_length=100)

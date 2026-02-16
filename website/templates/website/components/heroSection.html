@@ -1,0 +1,88 @@
+{% load static %}
+<section
+  class="relative h-screen flex items-center justify-center bg-center bg-cover bg-no-repeat overflow-hidden"
+  style="
+    background-image: linear-gradient(
+        135deg,
+        rgba(37, 99, 235, 0.85),
+        rgba(59, 130, 246, 0.75)
+      ),
+      url('{% static 'images/banner.webp' %}');"
+  aria-label="Miles For Smiles banner"
+>
+  <!-- Animated Background Overlay -->
+  <div
+    class="absolute inset-0 bg-linear-to-br from-blue-600/30 to-teal-500/20 animate-pulse-slow"
+  ></div>
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-5xl text-center px-6 animate-fade-in-up">
+    <!-- Decorative Element -->
+    <div class="inline-block mb-6">
+      <span
+        class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-6 py-2 rounded-full text-white text-sm font-medium border border-white/20"
+      >
+        <i class="fa-solid fa-heart text-red-400 animate-pulse"></i>
+        Making a Difference, One Smile at a Time
+      </span>
+    </div>
+
+    <h1
+      class="text-white text-5xl md:text-7xl font-extrabold leading-tight mb-6 drop-shadow-2xl"
+    >
+      Building Healthier <br />
+      <span
+        class="text-transparent bg-clip-text bg-linear-to-r from-teal-200 to-cyan-200 animate-gradient"
+      >
+        Communities
+      </span>
+    </h1>
+
+    <p
+      class="text-white/90 text-xl md:text-2xl mb-10 max-w-3xl mx-auto font-light leading-relaxed"
+    >
+      Join us in our mission to provide free dental care and education to
+      communities in need across Nepal
+    </p>
+
+    <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
+      <a
+        href="#contact"
+        class="group bg-linear-to-r from-green-500 to-green-600 font-semibold text-white px-8 py-4 rounded-xl hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 focus:ring-4 focus:ring-green-300 focus:outline-none flex items-center justify-center gap-2"
+      >
+        <i
+          class="fa-solid fa-hand-holding-heart group-hover:scale-110 transition-transform"
+        ></i>
+        Donate Now
+      </a>
+      <a
+        href="#contact"
+        class="group bg-white/10 backdrop-blur-sm font-semibold text-white px-8 py-4 rounded-xl hover:bg-white/20 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 border-2 border-white/30 focus:ring-4 focus:ring-white/20 focus:outline-none flex items-center justify-center gap-2"
+      >
+        <i
+          class="fa-solid fa-users group-hover:scale-110 transition-transform"
+        ></i>
+        Join Our Team
+      </a>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="animate-bounce">
+      <a
+        href="#objectives"
+        class="text-white/70 hover:text-white transition-colors"
+      >
+        <i class="fa-solid fa-chevron-down text-3xl"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- Decorative Shapes -->
+  <div class="absolute bottom-0 left-0 right-0">
+    <svg viewBox="0 0 1440 120" class="w-full h-auto fill-white">
+      <path
+        d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"
+      ></path>
+    </svg>
+  </div>
+</section>

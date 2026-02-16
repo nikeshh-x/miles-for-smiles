@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Partner, GalleryMedia, TeamMember, ContactMessage
+from .models import Partner, GalleryMedia, TeamMember,Events, ContactMessage
 
 # Register your models here.
 
@@ -23,6 +23,15 @@ class TeamMemberAdmin(admin.ModelAdmin):
     search_fields = ('name', 'role')
     list_filter = ('created_at', 'updated_at')
     ordering = ('name',)
+
+@admin.register(Events)
+class EventAdmin(admin.ModelAdmin):
+    list_display = ('title', 'venue','status' ,'start_date', 'end_date')
+    list_editable = ('status',)
+    search_fields = ('title','status')
+    list_filter = ('status','start_date')
+    prepopulated_fields = {'slug': ('title',)}
+
 
 @admin.register(ContactMessage)
 class ContactMessageAdmin(admin.ModelAdmin):

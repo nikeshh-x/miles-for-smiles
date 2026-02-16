@@ -1,11 +1,15 @@
-{% extends "base.html" %}
-
-{% block content %}
-  <!-- Gallery Section with Lightbox Effect -->
+{% load static %}
 <section id="gallery" class="py-20 bg-white scroll-mt-20">
   <div class="container mx-auto px-6">
     <div class="text-center mb-16">
+      <span
+        class="inline-block text-blue-600 font-semibold text-sm uppercase tracking-wider mb-2"
+        >Our Work</span
+      >
       <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Gallery</h2>
+      <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+        Moments captured from our dental camps and community outreach programs
+      </p>
     </div>
 
     <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
@@ -28,7 +32,14 @@
       {% endfor %}
     </div>
 
-    
+    <div class="text-center mt-12">
+      <a
+        href="{% url 'gallery' %}"
+        class="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-xl hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 font-semibold"
+      >
+        View Full Gallery
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
   </div>
 </section>
-{% endblock content %}

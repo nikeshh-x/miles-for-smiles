@@ -1,0 +1,222 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-linear-to-br from-blue-50 via-white to-teal-50 pt-28">
+    <div class="container mx-auto px-6">
+        <div class="text-center max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+                Our <span class="text-blue-600">Events</span>
+            </h1>
+            <p class="text-xl text-gray-600 mb-8">
+                Join us in creating smiles and making a difference in communities across Nepal
+            </p>
+            
+            <!-- Stats -->
+            <div class="flex flex-wrap justify-center gap-8 mt-8">
+                <div class="bg-white flex flex-col items-center px-6 py-4 rounded-2xl shadow-sm">
+                    <span class="text-3xl font-bold text-blue-600">{{ total_events }}</span>
+                    <span class="text-gray-600 ml-2">Total Events</span>
+                </div>
+                <div class="bg-white flex flex-col items-center px-6 py-4 rounded-2xl shadow-sm">
+                    <span class="text-3xl font-bold text-green-600">{{ upcoming_events }}</span>
+                    <span class="text-gray-600 ml-2">Upcoming</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Main Content -->
+<section class="py-12">
+    <div class="container mx-auto px-6">
+        
+        <!-- Advanced Filter Section -->
+        <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 mb-12">
+            <form method="GET" action="{% url 'events' %}" class="space-y-6">
+                
+                <!-- Search Bar -->
+                <div class="relative">
+                    <label for="search-input" class="block text-sm font-medium text-gray-700 mb-2">
+                        Search Events
+                    </label>
+                    <div class="flex gap-3">
+                        <input type="text" 
+                               id="search-input"
+                               name="search" 
+                               value="{{ search_query }}"
+                               placeholder="Search by title, description, or location..." 
+                               class="flex-1 px-5 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+                        <button type="submit" 
+                                class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition"
+                                aria-label="Search">
+                            <i class="fa-solid fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Filter Grid -->
+                <div class="grid md:grid-cols-3 gap-4">
+                    <!-- Status Filter -->
+                    <div>
+                        <label for="status-filter" class="block text-sm font-medium text-gray-700 mb-2">
+                            <i class="fa-solid fa-tag mr-2 text-blue-600"></i>Status
+                        </label>
+                        <select id="status-filter" 
+                                name="status" 
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500">
+                            <option value="ALL" {% if current_status == 'ALL' or not current_status %}selected{% endif %}>
+                                All Events
+                            </option>
+                            {% for value, label in all_statuses %}
+                                <option value="{{ value }}" {% if current_status == value %}selected{% endif %}>
+                                    {{ label }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    
+                    <!-- Sort By -->
+                    <div>
+                        <label for="sort-filter" class="block text-sm font-medium text-gray-700 mb-2">
+                            <i class="fa-solid fa-arrow-down-wide-short mr-2 text-blue-600"></i>Sort By
+                        </label>
+                        <select id="sort-filter" 
+                                name="sort" 
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500">
+                            <option value="recent" {% if sort == 'recent' or not sort %}selected{% endif %}>Most Recent</option>
+                            <option value="oldest" {% if sort == 'oldest' %}selected{% endif %}>Oldest First</option>
+                            <option value="title" {% if sort == 'title' %}selected{% endif %}>Title A-Z</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Filter Actions -->
+                <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-gray-200">
+                    <div class="flex items-center gap-3">
+                        <button type="submit" 
+                                class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all shadow-md hover:shadow-lg flex items-center gap-2">
+                            <i class="fa-solid fa-sliders"></i>
+                            Apply Filters
+                        </button>
+                        
+                        <a href="{% url 'events' %}" 
+                           class="px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold rounded-lg transition flex items-center gap-2">
+                            <i class="fa-solid fa-rotate-right"></i>
+                            Clear All
+                        </a>
+                    </div>
+                    
+                    <!-- Results Count -->
+                    <span class="text-gray-600">
+                        <span class="font-semibold">{{ events.count }}</span> event{{ events.count|pluralize }} found
+                    </span>
+                </div>
+            </form>
+        </div>
+
+        <!-- Events Grid -->
+        {% if events %}
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {% for event in events %}
+                    <article class="group relative overflow-hidden rounded-2xl border-2 border-gray-100 bg-white hover:border-blue-500 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                        
+                        <!-- Image Section -->
+                        <div class="relative h-48 overflow-hidden">
+                            {% if event.image %}
+                                <img src="{{ event.image.url }}" 
+                                     alt="{{ event.title }}" 
+                                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                     loading="lazy">
+                            {% else %}
+                                <div class="w-full h-full bg-linear-to-br from-blue-100 to-blue-50 flex items-center justify-center">
+                                    <i class="fa-solid fa-calendar-check text-6xl text-blue-300"></i>
+                                </div>
+                            {% endif %}
+                            
+                            <!-- Featured Badge -->
+                            {% if event.is_featured %}
+                                <span class="absolute top-4 left-4 bg-yellow-400 text-yellow-900 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-md">
+                                    <i class="fa-solid fa-star"></i>
+                                    FEATURED
+                                </span>
+                            {% endif %}
+                            
+                            <!-- Status Badge -->
+                            <span class="absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-bold shadow-md
+                                {% if event.status == 'UPCOMING' %}bg-blue-100 text-blue-700
+                                {% elif event.status == 'ONGOING' %}bg-green-100 text-green-700
+                                {% elif event.status == 'COMPLETED' %}bg-gray-100 text-gray-700
+                                {% elif event.status == 'CANCELLED' %}bg-red-100 text-red-700
+                                {% endif %}">
+                                {{ event.get_status_display }}
+                            </span>
+                        </div>
+                        
+                        <!-- Content -->
+                        <div class="p-6">
+                            <!-- Date -->
+                            <div class="flex items-center gap-2 text-sm text-blue-600 bg-blue-50 px-3 py-1 rounded-full w-fit mb-4">
+                                <i class="fa-solid fa-calendar"></i>
+                                <time datetime="{{ event.start_date|date:'Y-m-d' }}">
+                                    {{ event.start_date|date:"M d, Y" }}
+                                </time>
+                            </div>
+                            
+                            <!-- Title -->
+                            <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
+                                {{ event.title }}
+                            </h3>
+                            
+                            <!-- Venue -->
+                            <p class="text-gray-600 mb-3 flex items-center gap-2 text-sm">
+                                <i class="fa-solid fa-location-dot text-blue-600"></i>
+                                <span class="truncate">{{ event.venue|truncatechars:30 }}</span>
+                            </p>
+                            
+                            <!-- Description -->
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">
+                                {{ event.description|truncatewords:15 }}
+                            </p>
+                            
+                            <!-- Organizer -->
+                            <p class="text-xs text-gray-500 mb-4">
+                                <i class="fa-solid fa-user mr-1"></i>
+                                Organized by: <span class="font-medium">{{ event.organizer|truncatechars:25 }}</span>
+                            </p>
+                            
+                            <!-- Action Button  url 'event_detail' event.slug %}-->
+                            <a href="" 
+                               class="inline-flex items-center justify-between w-full px-4 py-3 bg-blue-50 hover:bg-blue-100 text-blue-700 font-semibold rounded-lg transition-all group-hover:gap-2"
+                               aria-label="View details for {{ event.title }}">
+                                <span>View Details</span>
+                                <i class="fa-solid fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        {% else %}
+            <!-- No Results -->
+            <div class="text-center py-16">
+                <div class="inline-block p-8 bg-gray-100 rounded-full mb-6">
+                    <i class="fa-solid fa-calendar-xmark text-6xl text-gray-400"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-3">No Events Found</h3>
+                <p class="text-gray-600 mb-8 max-w-md mx-auto">
+                    We couldn't find any events matching your criteria. Try adjusting your filters or search terms.
+                </p>
+                <a href="{% url 'events' %}" 
+                   class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition shadow-lg hover:shadow-xl">
+                    <i class="fa-solid fa-rotate-right"></i>
+                    View All Events
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+
+{% endblock %}
